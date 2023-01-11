@@ -1,0 +1,19 @@
+name: Build and Publish Docker
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    run-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@2
+      - name: Install dependencies
+        uses: npm install
+      - name: Run unit tests
+        uses: npm test
+        env:
+          SQLITE_DB_LOCATION: /tmp/todo.db

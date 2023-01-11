@@ -7,13 +7,13 @@ on:
 
 jobs:
   test:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@2
       - name: Install dependencies
-        uses: npm install
+        run: npm install
       - name: Run unit tests
-        uses: npm test
+        run: npm test
         env:
           SQLITE_DB_LOCATION: /tmp/todo.db
